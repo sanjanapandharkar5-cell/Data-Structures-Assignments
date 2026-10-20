@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define size 3
+#define size 10
 
 int front = -1, rear = -1;
 
