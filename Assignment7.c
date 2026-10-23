@@ -10,7 +10,6 @@ void push(int item) {
     top++;
     stack[top] = item;
 }
-}
 
 int pop() {
    if(top>=0) {
