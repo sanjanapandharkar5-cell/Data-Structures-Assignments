@@ -26,7 +26,7 @@ void add(struct Data* head) {
 }
 
 void deleteNode(struct Data* head, int val) {
-    if (head == NULL || head->next == NULL) {
+    if (head->next == NULL) {
       printf("List is empty.\n");
       return;
     }
@@ -48,7 +48,7 @@ void deleteNode(struct Data* head, int val) {
 }
 
 void display(struct Data* head){
-    if (head == NULL || head->next == NULL) {
+    if (head->next == NULL) {
       printf("List is empty.\n");
       return;
     }
@@ -60,7 +60,7 @@ void display(struct Data* head){
 }
 
 void count(struct Data* head) {
-    if (head == NULL || head->next == NULL) {
+    if (head->next == NULL) {
       printf("Total : 0\n");
       return;
     }
@@ -74,7 +74,7 @@ void count(struct Data* head) {
 }
 
 void sort(struct Data* head){
-    if (head == NULL || head->next == NULL || head->next->next == NULL) {
+    if (head->next == NULL || head->next->next == NULL) {
         printf("No sorting needed.\n");
         return;
     }
@@ -99,7 +99,7 @@ void sort(struct Data* head){
 }
 
 void reverseList(struct Data* head) { 
-    if (head == NULL || head->next == NULL || head->next->next == NULL) {
+    if (head->next == NULL || head->next->next == NULL) {
         printf("No reversal needed.\n");
         return;
     }
