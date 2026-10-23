@@ -5,11 +5,6 @@
 int stack[max];
 int top = -1;
 
-struct Variable {
- char name;
- char value;
-};
-
 void push(int item) {
  if(top<max-1) {
     top++;
