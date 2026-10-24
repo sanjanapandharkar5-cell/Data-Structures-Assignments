@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <ctype.h>
-#include <string.h>
 
 #define MAX 100
 
@@ -70,7 +69,6 @@ void infixToPostfix(char infix[], char postfix[]) {
         } 
         
         else {
-            
             while (!isempty() && isp(stack[top]) >= icp(ch)) {
                 postfix[j++] = pop();
             }
@@ -90,13 +88,10 @@ void infixToPostfix(char infix[], char postfix[]) {
 
 int main() {
     char infix[MAX], postfix[MAX];
-
     printf("Enter an infix expression: ");
     scanf("%s", infix);
 
     infixToPostfix(infix, postfix);
-
     printf("Postfix expression: %s\n", postfix);
-
     return 0;
 }
