@@ -136,7 +136,7 @@ int main(){
   
   while(1) {
     int choice;
-    printf("\n1.Add 2.Remove 3.Display 4.Count 5.Sort 6.Reverse 7.Free 8.Exit\n");
+    printf("\n1.Add 2.Remove 3.Display 4.Count 5.Sort 6.Reverse 7.Exit\n");
     printf("Enter your choice: ");
 
     switch(choice) {
