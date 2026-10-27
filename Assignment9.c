@@ -1,36 +1,32 @@
 #include <stdio.h>
-#define size 10
+#include <string.h>
 
-int front = -1, rear = -1;
+#define SIZE 3
 
-struct jobSeq {
+int front = 0, rear = 0;
+
+struct jobseq {
     int jobId;
     char jobTitle[20];
 };
 
 int isFull() {
-    if ((rear - 1 + size) % size == front) {
+    if (((rear + 1) % SIZE) == front) {
         return 1;
     }
     return 0;
 }
 
 int isEmpty() {
-    if (front == -1) {
+    if (front == rear) {
         return 1;
     }
     return 0;
 }
 
-void add(struct jobSeq que[], struct jobSeq el) {
+void add(struct jobseq que[], struct jobseq el) {
     if (isFull() == 0) {
-        if (front == -1) {
-            front = 0;
-            rear = 0;
-        } else {
-            rear = (rear - 1 + size) % size;
-        }
-        
+        rear = (rear + 1) % SIZE;
         que[rear] = el;
         printf("Job added.\n");
     } else {
@@ -38,42 +34,32 @@ void add(struct jobSeq que[], struct jobSeq el) {
     }
 }
 
-void delete(struct jobSeq que[]) {
+void deleteJob(struct jobseq que[]) {
     if (isEmpty() == 0) {
+        front = (front + 1) % SIZE;
         printf("Deleted Job ID: %d, Title: %s\n", que[front].jobId, que[front].jobTitle);
-        
-        if (front == rear) {
-            front = -1;
-            rear = -1; 
-        } else {
-            front = (front - 1 + size) % size;
-        }
     } else {
         printf("Queue is empty\n");
     }
 }
 
-void display(struct jobSeq que[]) {
-    if (isEmpty()) {
-        printf("Queue is empty\n");
-        return;
-    }
-
-    printf("Queue elements:\n");
-    int i = front;
-    while (1) {
-        printf("Job ID: %d, Title: %s\n", que[i].jobId, que[i].jobTitle);
-        
-        if (i == rear) {
-            break; 
+void display(struct jobseq que[]) {
+    if (isEmpty() == 1) {
+        printf("No jobs are present\n");
+    } else {
+        int i = (front + 1) % SIZE;
+        while (1) {
+            printf("Job ID: %d, Title: %s\n", que[i].jobId, que[i].jobTitle);
+            if (i == rear) {
+                break;
+            }
+            i = (i + 1) % SIZE;
         }
-        
-        i = (i - 1 + size) % size;
     }
 }
 
 int main() {
-    struct jobSeq que[size];
+    struct jobseq que[SIZE];
     int choice;
     
     do {
@@ -86,7 +72,7 @@ int main() {
         
         switch (choice) {
             case 1: {
-                struct jobSeq el;
+                struct jobseq el;
                 printf("Enter Job ID: ");
                 scanf("%d", &el.jobId);
                 printf("Enter Job Title: ");
@@ -95,7 +81,7 @@ int main() {
                 break;
             }
             case 2:
-                delete(que);
+                deleteJob(que);
                 break;
             case 3:
                 display(que); 
@@ -110,3 +96,4 @@ int main() {
     
     return 0;
 }
+
